@@ -1,0 +1,25 @@
+# Un playbook pour la mise a jour des elements critiques
+- hosts: all
+  tasks:
+    - name: Update openssh
+      apt:
+        name: openssh-server
+        state: latest
+        update_cache: yes
+
+- hosts: app
+  tasks:
+    - name: Update apache
+      apt:
+        name: apache2
+        state: latest
+        update_cache: yes
+
+- hosts: db
+  tasks:
+    - name: Update mariadb
+      apt:
+        name: mariadb-server
+        state: latest
+        update_cache: yes
+

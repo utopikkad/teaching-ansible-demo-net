@@ -1,0 +1,8 @@
+
+- hosts: all
+  tasks: 
+    - name: Install MOTD on server
+      template:
+        src: etc.motd.j2
+        dest: /etc/motd
+

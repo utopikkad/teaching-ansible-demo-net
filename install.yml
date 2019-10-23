@@ -1,0 +1,29 @@
+# Un playbook est un tableau de plays
+- hosts: all
+  tasks: 
+    - name: Install VIM everywhere !
+      apt:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - vim
+        - tmux
+    - name: Install MOTD
+      copy:
+        src: "{{project_root}}/files/db/etc.motd"
+        dest: /etc/motd
+
+- hosts: app
+  tasks:
+    - name: Install Apache everywhere !
+      apt:
+        name: apache2
+        state: present
+
+- hosts: db
+  tasks:
+    - name: Install Mariadb everywhere !
+      apt:
+        name: mariadb-server
+        state: present
+
